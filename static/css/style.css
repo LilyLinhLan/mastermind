@@ -1,0 +1,137 @@
+body {
+    background-color: #8FBC8F;
+    font-family:Arial, sans-serif;
+}
+
+.content {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 50px;
+    text-align: center;
+    font-family:Arial, sans-serif;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color:#348700;
+}
+
+.rainbow_text {
+    background-image: linear-gradient(to right, red, red, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.radio-group {
+    color:#348700;
+    padding-right:400px;
+}
+.mastermindtable {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.mastermindtable td, .mastermindtable th {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+}
+
+.mastermindtable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.mastermindtable tr td:first-child {
+    width: 15%;
+}
+
+.mastermindtable tr th:last-child {
+    width: 20%;
+}
+
+.mastermindtable td:hover {
+    border: 3px solid #ddd;
+}
+
+.mastermindtable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.colortab {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 76%;
+    table-layout: fixed;
+}
+
+.firsttab {
+    padding-left: 15%;
+}
+
+.colortab td, .colortab th {
+    border: 2px solid #ddd;
+    padding: 2px;
+    height: 30px;
+    text-align: center;
+}
+
+.colortab td:hover {
+    background-color: #ddd;
+}
+
+.parent {
+    display: table
+}
+
+.child {
+    color: #fff;
+    display: table-cell;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.left .right {
+    width: 20%;
+}
+
+.center {
+    width: 60%;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    width: 142px;
+}
+
+:disabled {
+   background-color:grey;
+}
+
+.button:hover {
+    background-color: #348700;
+}
+
+.radio-group {
+    left: 10%;
+    padding: 5px 12px;
+}
+
+.row-buttons {
+    display: inline;
+}

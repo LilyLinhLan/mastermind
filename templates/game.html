@@ -1,0 +1,63 @@
+
+<html>
+   <head>
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+       <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/table.js') }}" ></script>
+       <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/game.js') }}" ></script>
+   </head>
+   <body>
+       <input id="gameid" type="hidden" name="gameid" value={{ gameid }}>
+       <h2> Welcome {{username}} to Mastermind game! </h2>
+
+       <div class="container">
+            <div class="left child" align="right">
+                <button class="button" id="new_game" onclick="newGame()" > New Game </button>
+                <br>
+                <div class="radio-group" align="right">
+                    <input id="2_codes" name="num_codes" class="radio" type="radio" value="2"
+                           onclick="createGame(2)">2 digit code <br>
+                    <input id="3_codes" name="num_codes" class="radio" type="radio" value="3"
+                           onclick="createGame(3)">3 digit code <br>
+                    <input id="4_codes" name="num_codes" class="radio" type="radio" value="4"
+                           onclick="createGame(4)">4 digit code <br>
+                    <input id="5_codes" name="num_codes" class="radio" type="radio" value="5"
+                           onclick="createGame(5)">5 digit code <br>
+                    <input id="6_codes" name="num_codes" class="radio" type="radio" value="6"
+                           onclick="createGame(6)">6 digit code <br>
+                    <input id="7_codes" name="num_codes" class="radio" type="radio" value="7"
+                           onclick="createGame(7)">7 digit code <br>
+                </div>
+
+
+                <br>
+                <button class="button" id="play_random" onclick="playRandom()" > Play Random Codes </button>
+                <br>  <br>
+                <button class="button" id="get_hint" onclick="getHint()" > Get Hint </button>
+            </div>
+
+            <div class="center child">
+                <div class="firsttab">
+                    <table id="colortable" class="colortab"> </table>
+                    <br>
+                    <table id="colorinput" class="colortab"> </table>
+                </div>
+                <br>
+                <table id="history" class="mastermindtable"> </table>
+            </div>
+
+           <div class="right child">
+               <form action = "/score" method = "get">
+                     <p><input class="button" type = "submit" value = "Score Board" /></p>
+                </form>
+
+                <form action = "/logout" method = "get">
+                <p><input class="button" type = "submit" value = "Log out" /></p>
+                </form>
+           </div>
+        </div>
+    </body>
+
+</html>

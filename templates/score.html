@@ -1,0 +1,26 @@
+<html>
+   <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+      <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/score.js') }}" ></script>
+   </head>
+
+   <body>
+      <div class="content">
+         <h1 class="rainbow_text"> SCORE BOARD </h1>
+         <form class="row-buttons" action = "/new_game" method = "get">
+            <input class="button" type = "submit" value = "Play again" />
+         </form>
+
+         <form class="row-buttons" action = "/logout" method = "get">
+            <input class="button" type = "submit" value = "Log out" />
+         </form>
+
+         <br> <br>
+         <table id="scores" class="mastermindtable" align="center"></table>
+      </div>
+   </body>
+
+</html>
+

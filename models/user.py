@@ -8,8 +8,8 @@ class User(db.Model):
     looses = db.Column(db.Integer)
 
     @classmethod
-    def new_user(cls, userid):
-        user = cls(userid)
+    def new_user(cls, username):
+        user = cls(username)
         db.session.add(user)
         db.session.commit()
         return user

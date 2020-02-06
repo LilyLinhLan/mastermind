@@ -1,0 +1,59 @@
+
+<html>
+   <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/firework.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+      <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/table.js') }}" ></script>
+      <script type = "text/javascript"
+         src = "{{ url_for('static', filename = 'js/game.js') }}" ></script>
+   </head>
+
+
+   <body>
+      <input id="gameid" type="hidden" name="gameid" value={{ gameid }}>
+      <div class="content">
+         <p>
+            <h1 style="color:red">{{ result_message }}</h1>
+         </p>
+         <button class="button row-buttons" id="new_game" onclick="newGame()" > Play again </button>
+         <form class="row-buttons" action = "/score" method = "get">
+            <input class="button" type = "submit" value = "Score Board" />
+         </form>
+         <form class="row-buttons" action = "/logout" method = "get">
+            <input class="button" type = "submit" value = "Log out" />
+         </form>
+
+         <br> <br>
+         <table id="history" class="mastermindtable" align="center"/></table>
+      </div>
+
+   {% if "Congratulations!" in result_message %}
+      <div id="before"></div>
+      <div id="after"></div>
+      <div id="astar1"/></div>
+      <div id="astar2"/></div>
+      <div id="astar3"/></div>
+      <div id="astar4"/></div>
+      <div id="astar5"/></div>
+      <div id="astar6"/></div>
+      <div id="astar7"/></div>
+      <div id="astar8"/></div>
+      <div id="astar9"/></div>
+      <div id="astar10"/></div>
+
+      <div id="bstar1"/></div>
+      <div id="bstar2"/></div>
+      <div id="bstar3"/></div>
+      <div id="bstar4"/></div>
+      <div id="bstar5"/></div>
+      <div id="bstar6"/></div>
+      <div id="bstar7"/></div>
+      <div id="bstar8"/></div>
+      <div id="bstar9"/></div>
+      <div id="bstar10"/></div>
+      {% endif %}
+   </body>
+</html>
+
