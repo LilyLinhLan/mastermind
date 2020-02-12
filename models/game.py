@@ -13,6 +13,7 @@ class Game(db.Model):
     secret_code = db.Column(db.String())
     max_guess = db.Column(db.Integer)
     status = db.Column(db.String())
+    expired = db.Column(db.String())
 
 
     @classmethod
@@ -30,6 +31,8 @@ class Game(db.Model):
                                           + "&min=0&max=7&col=1&base=10&format=plain&rnd=new").read()
         codes = [i for i in str(contents) if i.isdigit()]
         self.secret_code = "".join(codes)
+        now = datetime.now()
+        self.expired = str(now + timedelta(seconds=1800, microseconds=-now.microsecond))
 
     def __repr__(self):
         return '<gameid {}>'.format(self.gameid)
@@ -40,7 +43,8 @@ class Game(db.Model):
             'userid': self.userid,
             'secret_code': self.secret_code,
             'max_guess': self.max_guess,
-            'status': self.status
+            'status': self.status,
+            'expired': self.expired
         }
 
 

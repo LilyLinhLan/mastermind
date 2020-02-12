@@ -112,15 +112,17 @@ h1, h2, h3 {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
+    font-weight: bold;
     border-radius: 5px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 142px;
+    width: 148px;
 }
 
 :disabled {
    background-color:grey;
+   pointer-events:none;
 }
 
 .button:hover {

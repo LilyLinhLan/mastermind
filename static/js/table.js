@@ -9,12 +9,16 @@ color_map = {
     "7": "teal"
 }
 
+var expiredTime = null;
+
 // Renders the game page with the given gameinfo object from the server
 function renderGame(gameinfo) {
     // Do not redirect if we are already in result page, otherwise, we have recursive reloading
     if (!$(location).attr('href').includes("/result") && (gameinfo.status == 'WIN' || gameinfo.status == 'LOOSE')) {
         $(location).attr('href', '/result?gameid=' + gameinfo.gameid); //redirect to results page
     }
+
+    expiredTime = new Date(gameinfo.expired).getTime();
 
     // Check the right radio button corresponding to the number of codes of the game
     $("#" + gameinfo.num_codes + "_codes").attr("checked", true);
@@ -45,6 +49,15 @@ function renderInput(num_codes) {
     }
     color_input += "</tr>";
     $("#colorinput").html(color_input);
+}
+
+function getUserCode() {
+    var guess_value = "";
+    var num_codes = gameSize();
+    for (var i = 1; i < num_codes + 1; i++) {
+        guess_value += $('#code' + i).html()
+    }
+    return guess_value;
 }
 
 function renderHistory(gameinfo) {

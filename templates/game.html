@@ -18,19 +18,18 @@
                 <br>
                 <div class="radio-group" align="right">
                     <input id="2_codes" name="num_codes" class="radio" type="radio" value="2"
-                           onclick="createGame(2)">2 digit code <br>
+                           onclick="createGame(2)">2-digit code <br>
                     <input id="3_codes" name="num_codes" class="radio" type="radio" value="3"
-                           onclick="createGame(3)">3 digit code <br>
+                           onclick="createGame(3)">3-digit code <br>
                     <input id="4_codes" name="num_codes" class="radio" type="radio" value="4"
-                           onclick="createGame(4)">4 digit code <br>
+                           onclick="createGame(4)">4-digit code <br>
                     <input id="5_codes" name="num_codes" class="radio" type="radio" value="5"
-                           onclick="createGame(5)">5 digit code <br>
+                           onclick="createGame(5)">5-digit code <br>
                     <input id="6_codes" name="num_codes" class="radio" type="radio" value="6"
-                           onclick="createGame(6)">6 digit code <br>
+                           onclick="createGame(6)">6-digit code <br>
                     <input id="7_codes" name="num_codes" class="radio" type="radio" value="7"
-                           onclick="createGame(7)">7 digit code <br>
+                           onclick="createGame(7)">7-digit code <br>
                 </div>
-
 
                 <br>
                 <button class="button" id="play_random" onclick="playRandom()" > Play Random Codes </button>
@@ -45,8 +44,12 @@
                     <table id="colorinput" class="colortab"> </table>
                 </div>
                 <br>
+                <div id="timer" style="color:red" align="center">Remaining time: </div>
+                <br>
                 <table id="history" class="mastermindtable"> </table>
             </div>
+
+
 
            <div class="right child">
                <form action = "/score" method = "get">

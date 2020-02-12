@@ -42,11 +42,11 @@ function getHint() {
 function submitGuess() {
     $('input[name="num_codes"]').attr("disabled", true)
     gameid = $("#gameid").val();
-    var guess_value = "";
-    var num_codes = gameSize();
-    for (var i = 1; i < num_codes + 1; i++) {
-        guess_value += $('#code' + i).html()
-    }
+    var guess_value = getUserCode();
+    sendGuessRequest(guess_value);
+}
+
+function sendGuessRequest(guess_value) {
     $.post("/guess2",
         {
             gameid: gameid,
@@ -78,8 +78,35 @@ function setInput(index, code, num_codes) {
     }
 }
 
+var interval = null;
+var timer = function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var remaining = expiredTime - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+    // Output the result in an element with id="demo"
+    $("#timer").html("Remaining time: " + minutes + "m " + seconds + "s ");
+
+    // If the count down is over, write some text
+    if (remaining < 0) {
+        clearInterval(interval);
+        $("#timer").html("EXPIRED");
+        gameid = $("#gameid").val();
+        $.post('/timeout/' + gameid, function(data, status) {
+            var gameinfo = JSON.parse(data);
+            renderGame(gameinfo);
+        })
+    }
+}
+
 $(document).ready(function(){
   gameid = $("#gameid").val();
+  interval = setInterval(timer, 1000);
   $.get("/gameinfo/" + gameid,
         function(data, status) {
             var gameinfo = JSON.parse(data);

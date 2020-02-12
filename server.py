@@ -114,5 +114,12 @@ def scores():
 def score():
     return render_template('score.html')
 
+@app.route('/timeout/<gameid>', methods=['POST'])
+def timeout(gameid):
+    game = Game.query.filter_by(gameid=gameid).first()
+    game.status = "LOOSE"
+    db.session.commit()
+    return redirect('/gameinfo/' + str(game.gameid))
+
 if __name__ == '__main__':
     app.run()
