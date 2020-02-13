@@ -30,21 +30,29 @@
                     <input id="7_codes" name="num_codes" class="radio" type="radio" value="7"
                            onclick="createGame(7)">7-digit code <br>
                 </div>
-
-                <br>
                 <button class="button" id="play_random" onclick="playRandom()" > Play Random Codes </button>
-                <br>  <br>
+                <br><br>
+                <button class="button" id="checkconflict" onclick="checkConflict()" disabled> Check Conflict </button>
+                <br><br>
                 <button class="button" id="get_hint" onclick="getHint()" > Get Hint </button>
+                <br><br>
+                <button class="button" id="computerplay" onclick="computerPlay()"> Computer Play </button>
             </div>
 
             <div class="center child">
+                <div id="timer" style="color:red" align="center">Remaining time: </div>
                 <div class="firsttab">
                     <table id="colortable" class="colortab"> </table>
+
                     <br>
                     <table id="colorinput" class="colortab"> </table>
                 </div>
                 <br>
-                <div id="timer" style="color:red" align="center">Remaining time: </div>
+
+                <div id="guessbutton">
+                    <button class="button" id="guess" onclick="submitGuess()" > Guess </button>
+                </div>
+
                 <br>
                 <table id="history" class="mastermindtable"> </table>
             </div>

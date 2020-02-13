@@ -14,11 +14,18 @@ class Guess(db.Model):
     def new_guess(cls, gameid, guess_number, guess_value, secret_code):
         no_correct = 0
         no_partial_correct = 0
+        remaining_guess, remaining_result = [], []
         for index, value in enumerate(guess_value):
             if value == secret_code[index]:
                 no_correct += 1
-            elif value in secret_code:
-                no_partial_correct += 1
+            else:
+                remaining_guess.append(guess_value[index])
+                remaining_result.append(secret_code[index])
+        for value in remaining_guess:
+            if value in remaining_result:
+                no_partial_correct +=1
+                remaining_result.remove(value)
+
         guess = cls(gameid, guess_number, guess_value, no_correct, no_partial_correct)
         db.session.add(guess)
         db.session.commit()

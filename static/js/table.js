@@ -9,27 +9,6 @@ color_map = {
     "7": "teal"
 }
 
-var expiredTime = null;
-
-// Renders the game page with the given gameinfo object from the server
-function renderGame(gameinfo) {
-    // Do not redirect if we are already in result page, otherwise, we have recursive reloading
-    if (!$(location).attr('href').includes("/result") && (gameinfo.status == 'WIN' || gameinfo.status == 'LOOSE')) {
-        $(location).attr('href', '/result?gameid=' + gameinfo.gameid); //redirect to results page
-    }
-
-    expiredTime = new Date(gameinfo.expired).getTime();
-
-    // Check the right radio button corresponding to the number of codes of the game
-    $("#" + gameinfo.num_codes + "_codes").attr("checked", true);
-
-    // Render input table
-    renderInput(gameinfo.num_codes);
-
-    // Render history table
-    renderHistory(gameinfo);
-}
-
 function renderInput(num_codes) {
     // Render color table
     $("#colortable").html("");
@@ -70,7 +49,7 @@ function renderHistory(gameinfo) {
 
     // Render a row for each guess
     gameinfo.guesses.forEach(function(guess) {
-        var rowToAppend = `<tr> <td> ${guess.guess_number} </td>`;
+        var rowToAppend = `<tr> <td id="guess_${guess.guess_number}"> ${guess.guess_number} </td>`;
         for (var i = 0; i < gameinfo.num_codes; i++) {
             rowToAppend += `<td bgcolor=${color_map[guess.guess_value[i]]}> ${guess.guess_value[i]} </td>`;
         }
